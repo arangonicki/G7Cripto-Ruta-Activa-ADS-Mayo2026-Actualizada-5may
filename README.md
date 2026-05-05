@@ -1,0 +1,1 @@
+# G7Cripto-Ruta-Activa-ADS-Mayo2026-Actualizada-5may
