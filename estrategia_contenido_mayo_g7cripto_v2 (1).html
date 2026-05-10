@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estrategia de Contenido Mayo 2026 — G7Cripto</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --azul-dark: #0A1F6E;
+    --azul-mid: #1A3A8F;
+    --cyan: #2196F3;
+    --azul-light: #E6F1FB;
+    --white: #ffffff;
+    --educativo: #2196F3;
+    --tutorial: #00B5CC;
+    --ventas: #1DB954;
+    --clip: #7C3AED;
+    --border: #D0DFF5;
+    --muted: #5A6A8A;
+    --text: #0A1F6E;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: #F4F8FF; color: var(--text); }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, var(--azul-dark) 0%, var(--azul-mid) 60%, #1E4BB8 100%);
+    padding: 36px 40px 28px;
+    position: relative; overflow: hidden;
+  }
+  .header::before { content:''; position:absolute; top:-40px; right:-40px; width:220px; height:220px; border-radius:50%; background:rgba(33,150,243,0.12); }
+  .header-top { display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:16px; }
+  .brand { display:flex; align-items:center; gap:12px; }
+  .brand-dot { width:36px; height:36px; background:var(--cyan); border-radius:8px; display:flex; align-items:center; justify-content:center; }
+  .brand-dot span { color:white; font-family:'Montserrat',sans-serif; font-weight:800; font-size:14px; }
+  .brand-name { color:white; font-family:'Montserrat',sans-serif; font-weight:700; font-size:18px; }
+  .brand-sub { color:rgba(255,255,255,0.6); font-size:12px; margin-top:1px; }
+  .header-badge { background:rgba(33,150,243,0.2); border:1px solid rgba(33,150,243,0.4); color:rgba(255,255,255,0.9); padding:6px 14px; border-radius:20px; font-size:12px; font-weight:500; }
+  .header h1 { color:white; font-family:'Montserrat',sans-serif; font-weight:800; font-size:28px; margin-top:20px; letter-spacing:-0.5px; }
+  .header h1 span { color:var(--cyan); }
+  .eje { margin-top:8px; color:rgba(255,255,255,0.7); font-size:13px; display:flex; align-items:center; gap:8px; }
+  .eje::before { content:'→'; color:var(--cyan); font-weight:600; }
+
+  /* FORMATS BANNER */
+  .formats-bar {
+    background: white;
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--border);
+  }
+  .formats-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; color:var(--muted); margin-right:4px; }
+  .format-pill {
+    display:inline-flex; align-items:center; gap:6px;
+    padding:5px 12px; border-radius:20px;
+    font-size:12px; font-weight:600; border:1px solid;
+  }
+  .fp-tutorial { background:rgba(0,181,204,0.08); color:#0090A8; border-color:rgba(0,181,204,0.3); }
+  .fp-carrusel { background:rgba(33,150,243,0.08); color:#0D7FD6; border-color:rgba(33,150,243,0.3); }
+  .fp-clip { background:rgba(124,58,237,0.08); color:#6D28D9; border-color:rgba(124,58,237,0.3); }
+  .fp-ads { background:rgba(240,78,35,0.08); color:#C93C14; border-color:rgba(240,78,35,0.3); }
+
+  /* TUTORIAL JOURNEY */
+  .journey-wrap {
+    background: white;
+    padding: 18px 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  .journey-title { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; color:var(--muted); margin-bottom:12px; }
+  .journey {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+  .journey-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 110px;
+    text-align: center;
+    position: relative;
+  }
+  .journey-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -18px;
+    top: 14px;
+    width: 36px;
+    height: 2px;
+    background: var(--border);
+    z-index: 0;
+  }
+  .journey-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--azul-dark);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700; font-size: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 6px;
+    z-index: 1; position: relative;
+  }
+  .journey-week { font-size: 10px; color: var(--cyan); font-weight: 600; margin-bottom: 2px; }
+  .journey-text { font-size: 11px; color: var(--muted); line-height: 1.3; }
+
+  /* LEGEND */
+  .legend { display:flex; gap:14px; flex-wrap:wrap; padding:14px 40px; background:var(--azul-light); border-bottom:1px solid var(--border); }
+  .legend-item { display:flex; align-items:center; gap:7px; font-size:12px; font-weight:500; color:var(--muted); }
+  .legend-dot { width:10px; height:10px; border-radius:2px; flex-shrink:0; }
+
+  /* TABS */
+  .tabs-wrap { padding:0 40px; background:white; display:flex; gap:0; border-bottom:1px solid var(--border); overflow-x:auto; }
+  .tab { padding:14px 22px; font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:var(--muted); cursor:pointer; border-bottom:3px solid transparent; white-space:nowrap; transition:all 0.2s; display:flex; align-items:center; gap:7px; background:none; border-top:none; border-left:none; border-right:none; }
+  .tab:hover { color:var(--cyan); }
+  .tab.active { color:var(--azul-dark); border-bottom-color:var(--cyan); }
+
+  /* CONTENT */
+  .content { padding:28px 40px 48px; max-width:1100px; }
+  .network-panel { display:none; }
+  .network-panel.active { display:block; }
+
+  /* NET INFO */
+  .net-info { display:flex; gap:12px; align-items:center; margin-bottom:20px; padding:16px 20px; background:white; border-radius:10px; border:1px solid var(--border); }
+  .net-icon { width:44px; height:44px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+  .net-title { font-family:'Montserrat',sans-serif; font-weight:700; font-size:15px; }
+  .net-role { font-size:12.5px; color:var(--muted); margin-top:2px; }
+  .net-freq { margin-left:auto; background:var(--azul-light); color:var(--azul-mid); padding:5px 12px; border-radius:20px; font-size:12px; font-weight:600; white-space:nowrap; }
+
+  /* ADS NOTICE */
+  .ads-notice {
+    margin-bottom: 20px;
+    padding: 13px 18px;
+    background: linear-gradient(90deg, #FFF8F0 0%, #FFF3EA 100%);
+    border: 1px solid #FBBF84;
+    border-radius: 8px;
+    font-size: 12.5px;
+    color: #7A4020;
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .ads-notice strong { display:block; font-weight:600; margin-bottom:2px; color:#5A2E10; }
+
+  /* WEEKS */
+  .weeks-grid { display:flex; flex-direction:column; gap:20px; }
+  .week-block { background:white; border-radius:12px; border:1px solid var(--border); overflow:hidden; }
+  .week-header { padding:12px 18px; background:var(--azul-dark); display:flex; align-items:center; gap:10px; }
+  .week-label { font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; color:white; letter-spacing:0.5px; text-transform:uppercase; }
+  .week-focus { font-size:12px; color:rgba(255,255,255,0.7); }
+  .week-dates { font-size:12px; color:rgba(255,255,255,0.45); margin-left:auto; }
+
+  /* TABLE */
+  .posts-table { width:100%; border-collapse:collapse; }
+  .posts-table th { padding:9px 16px; text-align:left; font-size:10.5px; font-weight:600; text-transform:uppercase; letter-spacing:0.5px; color:var(--muted); background:#F8FBFF; border-bottom:1px solid var(--border); }
+  .posts-table td { padding:12px 16px; font-size:13px; border-bottom:1px solid #EEF3FB; vertical-align:middle; }
+  .posts-table tr:last-child td { border-bottom:none; }
+  .posts-table tr:hover td { background:#FAFCFF; }
+
+  .day-cell { font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; color:var(--muted); white-space:nowrap; }
+  .day-cell .day-num { display:block; font-size:18px; font-weight:800; color:var(--azul-dark); line-height:1; }
+
+  .pilar-badge { display:inline-flex; align-items:center; gap:5px; padding:4px 10px; border-radius:4px; font-size:11px; font-weight:600; white-space:nowrap; }
+  .pilar-badge.educativo { background:rgba(33,150,243,0.1); color:#0D7FD6; }
+  .pilar-badge.tutorial { background:rgba(0,181,204,0.1); color:#0090A8; }
+  .pilar-badge.ventas { background:rgba(29,185,84,0.1); color:#148A3C; }
+  .pilar-badge.clip { background:rgba(124,58,237,0.1); color:#6D28D9; }
+
+  .format-tag { display:inline-block; background:var(--azul-light); color:var(--azul-mid); padding:3px 8px; border-radius:3px; font-size:11px; font-weight:500; }
+
+  .topic-text { color:#2D3E6B; font-size:13px; line-height:1.4; }
+  .topic-sub { color:var(--muted); font-size:11.5px; margin-top:3px; line-height:1.4; }
+
+  /* NETWORKS TAG */
+  .net-tags { display:flex; gap:5px; flex-wrap:wrap; }
+  .net-tag { font-size:10px; font-weight:600; padding:2px 7px; border-radius:3px; background:#EEF3FB; color:var(--azul-mid); }
+
+  /* YT */
+  .yt-week { display:grid; grid-template-columns:1fr 1fr; gap:12px; padding:16px; }
+  .yt-card { border-radius:8px; border:1px solid var(--border); padding:14px 16px; }
+  .yt-card.full { grid-column:1/-1; background:var(--azul-light); border-color:var(--cyan); }
+  .yt-card-label { font-size:10px; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+  .yt-card.full .yt-card-label { color:var(--azul-mid); }
+  .yt-card-title { font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; color:var(--azul-dark); }
+  .yt-card-desc { font-size:12px; color:var(--muted); margin-top:4px; line-height:1.4; }
+
+  .note { margin-top:20px; padding:14px 18px; background:#F0F7FF; border-left:3px solid var(--cyan); border-radius:0 8px 8px 0; font-size:12.5px; color:#1A3A8F; line-height:1.6; }
+  .note strong { font-weight:600; }
+
+  @media (max-width:700px) {
+    .header, .legend, .tabs-wrap, .content, .formats-bar, .journey-wrap { padding-left:20px; padding-right:20px; }
+    .posts-table th:nth-child(4), .posts-table td:nth-child(4) { display:none; }
+    .yt-week { grid-template-columns:1fr; }
+    .yt-card.full { grid-column:1; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-top">
+    <div class="brand">
+      <div class="brand-dot"><span>G7</span></div>
+      <div>
+        <div class="brand-name">G7Cripto</div>
+        <div class="brand-sub">G7Fintech SAS</div>
+      </div>
+    </div>
+    <div class="header-badge">Estrategia Orgánica · Mayo 2026</div>
+  </div>
+  <h1>Contenido por Red Social<br><span>Mayo → Junio 2026</span></h1>
+  <div class="eje">Eje del mes: "Ya llegaste. Ahora aprovéchalo." — Sin videos de Thiago · 3 formatos activos</div>
+</div>
+
+<!-- FORMATS ACTIVE THIS MONTH -->
+<div class="formats-bar">
+  <span class="formats-label">Formatos activos este mes</span>
+  <span class="format-pill fp-tutorial">📱 Tutoriales de app</span>
+  <span class="format-pill fp-carrusel">🖼 Carruseles / estáticas educativas</span>
+  <span class="format-pill fp-clip">🎙 Clips Clip Financiero</span>
+  <span class="format-pill fp-ads" style="margin-left:auto;">⚡ Videos de Thiago → TikTok ADS</span>
+</div>
+
+<!-- TUTORIAL JOURNEY -->
+<div class="journey-wrap">
+  <div class="journey-title">📍 Ruta de tutoriales — onboarding completo en 4 semanas</div>
+  <div class="journey">
+    <div class="journey-step">
+      <div class="journey-num">1</div>
+      <div class="journey-week">Semana 1</div>
+      <div class="journey-text">Descargar la app<br>y registrarse</div>
+    </div>
+    <div style="width:36px;height:2px;background:var(--border);flex-shrink:0;margin-top:-14px;"></div>
+    <div class="journey-step">
+      <div class="journey-num">2</div>
+      <div class="journey-week">Semana 2</div>
+      <div class="journey-text">Verificación<br>de identidad</div>
+    </div>
+    <div style="width:36px;height:2px;background:var(--border);flex-shrink:0;margin-top:-14px;"></div>
+    <div class="journey-step">
+      <div class="journey-num">3</div>
+      <div class="journey-week">Semana 3</div>
+      <div class="journey-text">Recibir pagos<br>desde plataformas</div>
+    </div>
+    <div style="width:36px;height:2px;background:var(--border);flex-shrink:0;margin-top:-14px;"></div>
+    <div class="journey-step">
+      <div class="journey-num">4</div>
+      <div class="journey-week">Semana 4</div>
+      <div class="journey-text">Bajar el dinero<br>al banco · Global66</div>
+    </div>
+  </div>
+</div>
+
+<!-- LEGEND -->
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:var(--tutorial)"></div> Tutorial · Soporte</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--educativo)"></div> Educativo</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--clip)"></div> Clip Financiero</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--ventas)"></div> Ventas</div>
+  <div class="legend-item" style="margin-left:auto; color:#999; font-size:11px;">S1: 12–16 · S2: 19–23 · S3: 26–30 · S4: 2–6 jun</div>
+</div>
+
+<!-- TABS -->
+<div class="tabs-wrap">
+  <button class="tab active" onclick="showTab('tiktok',this)"><span>🎵</span> TikTok</button>
+  <button class="tab" onclick="showTab('instagram',this)"><span>📸</span> Instagram</button>
+  <button class="tab" onclick="showTab('youtube',this)"><span>▶️</span> YouTube</button>
+  <button class="tab" onclick="showTab('facebook',this)"><span>👥</span> Facebook</button>
+</div>
+
+<div class="content">
+
+<!-- ===================== TIKTOK ===================== -->
+<div id="tiktok" class="network-panel active">
+  <div class="net-info">
+    <div class="net-icon" style="background:#FFF0ED;">🎵</div>
+    <div>
+      <div class="net-title">TikTok @g7cripto</div>
+      <div class="net-role">Motor de descubrimiento · Tutoriales cortos + carruseles + clips</div>
+    </div>
+    <div class="net-freq">3–4 posts / semana</div>
+  </div>
+
+  <div class="ads-notice">
+    <span style="font-size:18px;">⚡</span>
+    <div><strong>Videos de Thiago → TikTok Ads (no orgánico este mes)</strong>
+    El contenido orgánico de TikTok este mes es tutoriales de pantalla, carruseles en slideshow y clips del podcast. Los Spark Ads de Thiago corren en paralelo como paid — no se mezclan con el feed orgánico.</div>
+  </div>
+
+  <div class="weeks-grid">
+
+    <div class="week-block">
+      <div class="week-header">
+        <div class="week-label">Semana 1</div>
+        <div class="week-focus">— Tutorial: descargar y registrarse</div>
+        <div class="week-dates">12–16 mayo</div>
+      </div>
+      <table class="posts-table">
+        <thead><tr><th style="width:70px">Día</th><th>Pilar</th><th>Formato</th><th>Tema</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="day-cell">Lun<span class="day-num">12</span></td>
+            <td><span class="pilar-badge tutorial">Tutorial</span></td>
+            <td><span class="format-tag">Pantalla grabada</span></td>
+            <td><span class="topic-text">Cómo descargar la app G7Cripto y crear tu cuenta</span><div class="topic-sub">Tutorial #1 del onboarding. Paso a paso desde la tienda hasta el registro completo</div></td>
+          </tr>
+          <tr>
+            <td class="day-cell">Mié<span class="day-num">14</span></td>
+            <td><span class="pilar-badge educativo">Educativo</span></td>
+            <td><span class="format-tag">Carrusel slideshow</span></td>
+            <td><span class="topic-text">¿Cómo funciona G7Cripto? — del pago de plataforma a tu banco</span><div class="topic-sub">Explica el flujo completo: Chaturbate/Stripchat → G7Cripto → USDT → banco. Sin tecnicismos</div></td>
+          </tr>
+          <tr>
+            <td class="day-cell">Vie<span class="day-num">16</span></td>
+            <td><span class="pilar-badge clip">Clip Financiero</span></td>
+            <td><span class="format-tag">Clip de podcast</span></td>
+            <td><span class="topic-text">Fragmento del episodio disponible — mejor momento de retención</span><div class="topic-sub">El dato o insight que más impacto genera. Subtítulos en pantalla, formato vertical</div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="week-block">
+      <div class="week-header">
+        <div class="week-label">Semana 2</div>
+        <div class="week-focus">— Tutorial: verificación de identidad</div>
+        <div class="week-dates">19–23 mayo</div>
+      </div>
+      <table class="posts-table">
+        <thead><tr><th style="width:70px">Día</th><th>Pilar</th><th>Formato</th><th>Tema</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="day-cell">Lun<span class="day-num">19</span></td>
+            <td><span class="pilar-badge tutorial">Tutorial</span></td>
+            <td><span class="format-tag">Pantalla grabada</span></td>
+            <td><span class="topic-text">Verificación de identidad en G7Cripto — paso a paso sin complicaciones</span><div class="topic-sub">Tutorial #2. Qué documentos necesitas, qué pasa si te pide selfie, cuánto tarda</div></td>
+          </tr>
+          <tr>
+            <td class="day-cell">Mié<span class="day-num">21</span></td>
+            <td><span class="pilar-badge educativo">Educativo</span></td>
+            <td><span class="format-tag">Carrusel slideshow</span></td>
+            <td><span class="topic-text">¿Qué es USDT y por qué tu dinero llega en eso?</span><div class="topic-sub">Explica el rol de USDT en el flujo de G7Cripto. Desmitifica la crypto para la audiencia</div></td>
+          </tr>
+          <tr>
+            <td class="day-cell">Jue<span class="day-num">22</span></td>
+            <td><span class="pilar-badge ventas">Ventas</span></td>
+            <td><span class="format-tag">Imagen estática</span></td>
+            <td><span class="topic-text">Comparativa: lo que cobra una monetizadora vs G7Cripto</span><div class="topic-sub">Gráfica de números reales. 0% comisión + solo TRM del día – 177 COP. Sin nombrar competidores</div></td>
+          </tr>
+          <tr>
+            <td class="day-cell">Vie<span class="day-num">23</span></td>
+            <td><span class="pilar-badge clip">Clip Financiero</span></td>
+            <td><span class="format-tag">Clip de podcast</span></td>
+            <td><span class="topic-text">Clip de autoridad — momento donde el invitado da un dato del sector</span><div class="topic-sub">El fragmento que más credibilidad genera para el gremio. No tiene que ser el más viral</div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="week-block">
+      <div class="week-header">
+        <div class="week-label">Semana 3</div>
+        <div class="week-focus">— Tutorial: recibir pagos desde plataformas</div>
+        <div class="week-dates">26–30 mayo</div>
+      </div>
+      <table class="posts-table">
+        <thead><tr><th style="width:70px">Día</th><th>Pilar</th><th>Formato</th><th>Tema</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="day-cell">Lun<span class="day-num">26</span></td>
+            <td><span class="pilar-badge tutorial">Tutorial</span></td>
+            <td><span class="format-tag">Pantalla grabada</span></td>
+            <td><span class="topic-text">Cómo configurar tu pago desde Chaturbate / Stripchat a G7Cripto</span><div class="topic-sub">Tutorial #3 — el más crítico del mes. Muestra exactamente cómo llega el dinero de la plataforma a la wallet</div></td>
+          </tr>
+          <tr>
+            <td class="day-cell">Mié<span class="day-num">28</span></td>
+            <td><span class="pilar-badge educativo">Educativo</span></td>
+            <td><span class="format-tag">Carrusel slideshow</span></td>
+            <td><span class="topic-text">TRM explicada: qué es, cómo fluctúa y cómo afecta lo que recibes</span><div class="topic-sub">Glosario del gremio. Conecta con por qué G7Cripto usa solo TRM del día sin castigo adicional</div></td>
+          </tr>
+          <tr>
+            <td class="day-cell">Vie<span class="day-num">30</span></td>
+            <td><span class="pilar-badge clip">Clip Financiero</span></td>
+            <td><span class="format-tag">Clip de podcast</span></td>
+            <td><span class="topic-text">Fragmento del episodio con alianza — clip de impacto del sector</span><div class="topic-sub">El clip más relevante del ep. con figura invitada. Priorizar momento de conexión con el gremio</div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="week-block">
+      <div class="week-header">
+        <div class="week-label">Semana 4</div>
+        <div class="week-focus">— Tutorial: bajar el dinero al banco</div>
+        <div class="week-dates">2–6 junio</div>
+      </div>
+      <table class="posts-table">
+        <thead><tr><th style="width:70px">Día</th><th>Pilar</th><th>Formato</th><th>Tema</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="day-cell">Lun<span class="day-num">2</span></td>
+            <td><span class="pilar-badge tutorial">Tutorial</span></td>
+            <td><span class="format-tag">Pantalla grabada</span></td>
+            <td><span class="topic-text">Cómo transferir tus USDT al banco vía Global66 — el mismo día</span><div class="topic-sub">Tutorial #4 — cierre del onboarding. Muestra el momento en que el dinero llega al banco real</div></td>
+          </tr>
+          <tr>
+            <td class="day-cell">Mié<span class="day-num">4</span></td>
+            <td><span class="pilar-badge educativo">Educativo</span></td>
+            <td><span class="format-tag">Carrusel slideshow</span></td>
+            <td><span class="topic-text">¿Por qué te bloquean la cuenta cuando recibes tus pagos?</span><div class="topic-sub">Explica el problema real del gremio: por qué los bancos bloquean y cómo G7Cripto lo evita estructuralmente</div></td>
+          </tr>
+          <tr>
+            <td class="day-cell">Vie<span class="day-num">6</span></td>
+            <td><span class="pilar-badge ventas">Ventas</span></td>
+            <td><span class="format-tag">Imagen estática</span></td>
+            <td><span class="topic-text">CTA cierre de mes: descarga G7Cripto — 3 razones en una pantalla</span><div class="topic-sub">Mismo día, sin bloqueos, 0% comisión. El CTA más directo del mes. Link en bio</div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <div class="note"><strong>Serie TikTok nativa:</strong> Los 4 tutoriales se agrupan bajo una Serie llamada "Cómo cobrar sin bloqueos" — la plataforma empuja los episodios previos cada vez que se publica uno nuevo. Crear la serie antes de publicar el Tutorial #1.</div>
+</div>
+
+<!-- ===================== INSTAGRAM ===================== -->
+<div id="instagram" class="network-panel">
+  <div class="net-info">
+    <div class="net-icon" style="background:#FDF0F8;">📸</div>
+    <div>
+      <div class="net-title">Instagram @g7cripto</div>
+      <div class="net-role">Casa de la comunidad · Carruseles guardables + Reels de tutoriales</div>
+    </div>
+    <div class="net-freq">3–4 posts / semana</div>
+  </div>
+
+  <div class="weeks-grid">
+
+    <div class="week-block">
+      <div class="week-header">
+        <div class="week-label">Semana 1</div>
+        <div class="week-focus">— Presentar el flujo completo del producto</div>
+        <div class="week-dates">12–16 mayo</div>
+      </div>
+      <table class="posts-table">
+        <thead><tr><th style="width:70px">Día</th><th>Pilar</th><th>Formato</th><th>Tema</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="day-cell">Lun<span class="day-num">12</span></td>
+            <td><span class="pilar-badge educativo">Educativo</span></td>
+            <td><span class="format-tag">Carrusel 5 slides</span></td>
+            <td><span class="topic-text">Del pago de Chaturbate a tu banco — así funciona G7Cripto</span><div class="topic-sub">El flujo completo en slides: plataforma → G7Cripto → USDT → banco. Guardable, compartible</div></td>
+          </tr>
+          <tr>
+            <td class="day-cell">Mié<span class="day-num">14</span></td>
+            <td><span class="pilar-badge tutorial">Tutorial</span></td>
+            <td><span class="format-tag">Reel</span></td>
+            <td><span class="topic-text">Descargar la app y registrarse — versión visual rápida</span><div class="topic-sub">Repurpose del tutorial de TikTok. Sin marca de agua. Subtítulos revisados</div></td>
+          </tr>
+          <tr>
+            <td class="day-cell">Jue<span class="day-num">15</span></td>
+            <td><span class="pilar-badge clip">Clip Financiero</span></td>
+            <td><span class="format-tag">Reel</span></td>
+            <td><span class="topic-text">Repurpose clip del podcast — fragmento de mayor retención</span><div class="topic-sub">Mismo clip de TikTok del viernes. Caption adaptado al tono de comunidad de IG</div></td>
+          </tr>
+          <tr>
+            <td class="day-cell">Vie<span class="day-num">16</span></td>
+            <td><span class="pilar-badge ventas">Ventas</span></td>
+            <td><span class="format-tag">Imagen estática</span></td>
+            <td><span class="topic-text">Comparativa de tasas — diseño limpio para feed</span><div class="topic-sub">La gráfica de TikTok adaptada a 1080x1080. Candidata a boostearse con Meta Ads</div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="week-block">
+      <div class="week-header">
+        <div class="week-label">Semana 2</div>
+        <div class="week-focus">— Desmitificar la verificación y el USDT</div>
+        <div class="week-dates">19–23 mayo</div>
+      </div>
+      <table class="posts-table">
+        <thead><tr><th style="width:70px">Día</th><th>Pilar</th><th>Formato</th><th>Tema</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="day-cell">Lun<span class="day-num">19</span></td>
+            <td><span class="pilar-badge educativo">Educativo</span></td>
+            <td><span class="format-tag">Carrusel 5 slides</span></td>
+            <td><span class="topic-text">¿Qué es USDT? — lo que tu dinero se convierte antes de llegar al banco</span><div class="topic-sub">Diseñado para guardarse y mandarse entre colegas. Sin tecnicismos, con analogías del día a día</div></td>
+          </tr>
+          <tr>
+            <td class="day-cell">Mié<span class="day-num">21</span></td>
+            <td><span class="pilar-badge tutorial">Tutorial</span></td>
+            <td><span class="format-tag">Reel</span></td>
+            <td><span class="topic-text">Verificación de identidad — sin misterio y sin miedo</span><div class="topic-sub">Repurpose del tutorial de TikTok. El objetivo: que el proceso se vea simple y seguro</div></td>
+          </tr>
+          <tr>
+            <td class="day-cell">Vie<span class="day-num">23</span></td>
+            <td><span class="pilar-badge clip">Clip Financiero</span></td>
+            <td><span class="format-tag">Reel</span></td>
+            <td><span class="topic-text">Clip de autoridad del episodio — adaptado a IG</span><div class="topic-sub">El fragmento que más credibilidad proyecta. Caption más reflexivo que el de TikTok</div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="week-block">
+      <div class="week-header">
+        <div class="week-label">Semana 3</div>
+        <div class="week-focus">— Mostrar el dinero llegando de las plataformas</div>
+        <div class="week-dates">26–30 mayo</div>
+      </div>
+      <table class="posts-table">
+        <thead><tr><th style="width:70px">Día</th><th>Pilar</th><th>Formato</th><th>Tema</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="day-cell">Lun<span class="day-num">26</span></td>
+            <td><span class="pilar-badge educativo">Educativo</span></td>
+            <td><span class="format-tag">Carrusel 5 slides</span></td>
+            <td><span class="topic-text">TRM explicada — qué es y cómo afecta lo que recibes cada semana</span><div class="topic-sub">Candidato a Meta Ads si el save rate de carruseles anteriores es alto. Diseño guardable</div></td>
+          </tr>
+          <tr>
+            <td class="day-cell">Mié<span class="day-num">28</span></td>
+            <td><span class="pilar-badge tutorial">Tutorial</span></td>
+            <td><span class="format-tag">Reel</span></td>
+            <td><span class="topic-text">Cómo configurar tu pago desde Chaturbate / Stripchat</span><div class="topic-sub">El tutorial más importante del mes. Repurpose de TikTok con énfasis en la facilidad del proceso</div></td>
+          </tr>
+          <tr>
+            <td class="day-cell">Vie<span class="day-num">30</span></td>
+            <td><span class="pilar-badge clip">Clip Financiero</span></td>
+            <td><span class="format-tag">Reel</span></td>
+            <td><span class="topic-text">Clip del episodio con alianza del sector</span><div class="topic-sub">El fragmento donde la figura invitada habla desde su experiencia. Alto potencial de compartidos</div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="week-block">
+      <div class="week-header">
+        <div class="week-label">Semana 4</div>
+        <div class="week-focus">— Cerrar el ciclo: dinero en tu banco</div>
+        <div class="week-dates">2–6 junio</div>
+      </div>
+      <table class="posts-table">
+        <thead><tr><th style="width:70px">Día</th><th>Pilar</th><th>Formato</th><th>Tema</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="day-cell">Lun<span class="day-num">2</span></td>
+            <td><span class="pilar-badge educativo">Educativo</span></td>
+            <td><span class="format-tag">Carrusel 5 slides</span></td>
+            <td><span class="topic-text">¿Por qué te bloquean la cuenta cuando recibes tus pagos?</span><div class="topic-sub">Alto potencial de guardados y compartidos — toca el dolor más común del gremio. Diseño guardable</div></td>
+          </tr>
+          <tr>
+            <td class="day-cell">Mié<span class="day-num">4</span></td>
+            <td><span class="pilar-badge tutorial">Tutorial</span></td>
+            <td><span class="format-tag">Reel</span></td>
+            <td><span class="topic-text">Cómo bajar tu dinero al banco vía Global66 — el mismo día</span><div class="topic-sub">El tutorial que cierra el onboarding. El momento más satisfactorio del flujo para mostrar</div></td>
+          </tr>
+          <tr>
+            <td class="day-cell">Vie<span class="day-num">6</span></td>
+            <td><span class="pilar-badge educativo">Educativo</span></td>
+            <td><span class="format-tag">Carrusel</span></td>
+            <td><span class="topic-text">Los 5 errores más comunes al recibir pagos internacionales (y cómo evitarlos)</span><div class="topic-sub">Carrusel de cierre de mes con alto potencial de guardados. Cada error es un slide — el último es la solución G7Cripto</div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <div class="note"><strong>Stories semanales (no requieren producción extra):</strong> 3–4 Stories por semana para mantener el algoritmo activo: reposts de menciones, encuestas ("¿ya descargaste la app?"), contadores regresivos y behind the scenes del equipo. No es contenido de feed — es señal de actividad para el algoritmo de IG.</div>
+</div>
+
+<!-- ===================== YOUTUBE ===================== -->
+<div id="youtube" class="network-panel">
+  <div class="net-info">
+    <div class="net-icon" style="background:#FFF0F0;">▶️</div>
+    <div>
+      <div class="net-title">YouTube @g7cripto</div>
+      <div class="net-role">Shorts indexables · Tutoriales de app + clips de capítulos de Clip Financiero</div>
+    </div>
+    <div class="net-freq">2–3 Shorts / semana</div>
+  </div>
+
+  <div class="ads-notice">
+    <span style="font-size:18px;">🎙</span>
+    <div><strong>Clip Financiero vive en su propio canal</strong>
+    Los episodios completos se publican en el canal de Clip Financiero. G7Cripto usa solo clips extraídos de esos capítulos como Shorts, junto con los tutoriales de app.</div>
+  </div>
+
+  <div class="weeks-grid">
+
+    <div class="week-block">
+      <div class="week-header">
+        <div class="week-label">Semana 1</div>
+        <div class="week-dates">12–18 mayo</div>
+      </div>
+      <div class="yt-week">
+        <div class="yt-card">
+          <div class="yt-card-label">⚡ Short #1</div>
+          <div class="yt-card-title">Tutorial: Descargar la app y registrarse</div>
+          <div class="yt-card-desc">Primer video de la playlist "Tutoriales G7Cripto". Indexar: "cómo descargar G7Cripto", "registrarse G7Cripto".</div>
+        </div>
+        <div class="yt-card">
+          <div class="yt-card-label">⚡ Short #2</div>
+          <div class="yt-card-title">Clip del capítulo — mejor momento de retención</div>
+          <div class="yt-card-desc">El dato o insight más impactante del capítulo disponible. Indexar con el tema del fragmento.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="week-block">
+      <div class="week-header">
+        <div class="week-label">Semana 2</div>
+        <div class="week-dates">19–25 mayo</div>
+      </div>
+      <div class="yt-week">
+        <div class="yt-card">
+          <div class="yt-card-label">⚡ Short #1</div>
+          <div class="yt-card-title">Tutorial: Verificación de identidad</div>
+          <div class="yt-card-desc">Short #2 de la playlist. Indexar: "verificación G7Cripto KYC", "cómo verificar cuenta G7Cripto".</div>
+        </div>
+        <div class="yt-card">
+          <div class="yt-card-label">⚡ Short #2</div>
+          <div class="yt-card-title">Clip educativo: ¿Qué es USDT?</div>
+          <div class="yt-card-desc">Fragmento del capítulo o del carrusel adaptado a Short. Indexar: "qué es USDT explicado fácil".</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="week-block">
+      <div class="week-header">
+        <div class="week-label">Semana 3</div>
+        <div class="week-dates">26 mayo – 1 junio</div>
+      </div>
+      <div class="yt-week">
+        <div class="yt-card">
+          <div class="yt-card-label">⚡ Short #1</div>
+          <div class="yt-card-title">Tutorial: Recibir pagos desde Chaturbate / Stripchat</div>
+          <div class="yt-card-desc">El tutorial más buscado del mes. Indexar: "cómo cobrar Chaturbate Colombia", "pagos Stripchat sin bloqueo".</div>
+        </div>
+        <div class="yt-card">
+          <div class="yt-card-label">⚡ Short #2</div>
+          <div class="yt-card-title">Clip del capítulo con alianza — ángulo emocional</div>
+          <div class="yt-card-desc">El fragmento más humano del capítulo con la figura invitada.</div>
+        </div>
+        <div class="yt-card">
+          <div class="yt-card-label">⚡ Short #3</div>
+          <div class="yt-card-title">Clip del capítulo con alianza — ángulo informativo</div>
+          <div class="yt-card-desc">El dato más sorprendente del capítulo. Diferente al anterior para no saturar.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="week-block">
+      <div class="week-header">
+        <div class="week-label">Semana 4</div>
+        <div class="week-dates">2–8 junio</div>
+      </div>
+      <div class="yt-week">
+        <div class="yt-card" style="grid-column:1/-1; background:#F8FBFF; border-style:dashed;">
+          <div class="yt-card-label">Cierre de mes — completar playlist y preparar junio</div>
+          <div class="yt-card-title">Los 4 tutoriales quedan en playlist permanente "Tutoriales G7Cripto"</div>
+        </div>
+        <div class="yt-card">
+          <div class="yt-card-label">⚡ Short #1</div>
+          <div class="yt-card-title">Tutorial: Bajar dinero al banco vía Global66</div>
+          <div class="yt-card-desc">Cierra la playlist de tutoriales. Indexar: "cómo bajar USDT al banco Colombia", "Global66 G7Cripto tutorial".</div>
+        </div>
+        <div class="yt-card">
+          <div class="yt-card-label">⚡ Short #2</div>
+          <div class="yt-card-title">¿Por qué te bloquean la cuenta cuando recibes pagos?</div>
+          <div class="yt-card-desc">Clip educativo extraído del carrusel. Indexar: "por qué bloquean cuenta bancaria pagos internacionales".</div>
+        </div>
+        <div class="yt-card">
+          <div class="yt-card-label">⚡ Short #3</div>
+          <div class="yt-card-title">Teaser del próximo episodio de Clip Financiero</div>
+          <div class="yt-card-desc">30 seg. de anticipación para el ep. de junio. Genera suscripciones antes del lanzamiento.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="note"><strong>Playlist permanente "Tutoriales G7Cripto":</strong> Los 4 tutoriales del mes se agrupan en esta playlist y quedan fijados en el canal. Cuando los ADS de Google arranquen en junio, estos videos ya estarán indexados y capturan búsquedas activas como "cómo cobrar desde Chaturbate en Colombia" sin costo adicional.</div>
+</div>
+
+<!-- ===================== FACEBOOK ===================== -->
+<div id="facebook" class="network-panel">
+  <div class="net-info">
+    <div class="net-icon" style="background:#EEF4FF;">👥</div>
+    <div>
+      <div class="net-title">Facebook @g7cripto</div>
+      <div class="net-role">Canal B2B · Estudios y agencias · Tomadores de decisión 30–45 años</div>
+    </div>
+    <div class="net-freq">2 posts / semana</div>
+  </div>
+
+  <div class="weeks-grid">
+
+    <div class="week-block">
+      <div class="week-header">
+        <div class="week-label">Semana 1</div>
+        <div class="week-dates">12–16 mayo</div>
+      </div>
+      <table class="posts-table">
+        <thead><tr><th style="width:70px">Día</th><th>Pilar</th><th>Formato</th><th>Tema</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="day-cell">Mié<span class="day-num">14</span></td>
+            <td><span class="pilar-badge educativo">Educativo</span></td>
+            <td><span class="format-tag">Post + carrusel</span></td>
+            <td><span class="topic-text">Cómo funciona G7Cripto para un estudio — del pago de plataforma al banco</span><div class="topic-sub">Repurpose del carrusel de IG con caption orientado al administrador del estudio. Más texto, más contexto</div></td>
+          </tr>
+          <tr>
+            <td class="day-cell">Vie<span class="day-num">16</span></td>
+            <td><span class="pilar-badge ventas">Ventas</span></td>
+            <td><span class="format-tag">Imagen estática</span></td>
+            <td><span class="topic-text">Comparativa de tasas — impacto mensual en la operación del estudio</span><div class="topic-sub">Misma gráfica, caption con enfoque en el costo acumulado para un estudio con varias modelos</div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="week-block">
+      <div class="week-header">
+        <div class="week-label">Semana 2</div>
+        <div class="week-dates">19–23 mayo</div>
+      </div>
+      <table class="posts-table">
+        <thead><tr><th style="width:70px">Día</th><th>Pilar</th><th>Formato</th><th>Tema</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="day-cell">Mié<span class="day-num">21</span></td>
+            <td><span class="pilar-badge tutorial">Tutorial</span></td>
+            <td><span class="format-tag">Video</span></td>
+            <td><span class="topic-text">Verificación de identidad — lo que cada modelo de tu estudio necesita hacer una sola vez</span><div class="topic-sub">El dolor del estudio es que cada modelo tiene que pasar este proceso. Mostrar que es rápido y simple</div></td>
+          </tr>
+          <tr>
+            <td class="day-cell">Vie<span class="day-num">23</span></td>
+            <td><span class="pilar-badge clip">Clip Financiero</span></td>
+            <td><span class="format-tag">Video</span></td>
+            <td><span class="topic-text">Fragmento del Clip Financiero más relevante para decisores del sector</span><div class="topic-sub">El momento del episodio que habla de industria o de rentabilidad. No el más viral — el más creíble</div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="week-block">
+      <div class="week-header">
+        <div class="week-label">Semana 3</div>
+        <div class="week-dates">26–30 mayo</div>
+      </div>
+      <table class="posts-table">
+        <thead><tr><th style="width:70px">Día</th><th>Pilar</th><th>Formato</th><th>Tema</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="day-cell">Mié<span class="day-num">28</span></td>
+            <td><span class="pilar-badge educativo">Educativo</span></td>
+            <td><span class="format-tag">Carrusel</span></td>
+            <td><span class="topic-text">TRM y cómo afecta los pagos de tu estudio cada mes — con números reales</span><div class="topic-sub">Enfocado en el impacto colectivo: si el estudio tiene 10 modelos, el castigo a la TRM se multiplica</div></td>
+          </tr>
+          <tr>
+            <td class="day-cell">Vie<span class="day-num">30</span></td>
+            <td><span class="pilar-badge clip">Clip Financiero</span></td>
+            <td><span class="format-tag">Video</span></td>
+            <td><span class="topic-text">Clip del episodio con alianza — fragmento sobre independencia del gremio</span><div class="topic-sub">Repurpose del clip más relevante de la semana. Caption B2B: "lo que los mejores estudios ya están haciendo"</div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="week-block">
+      <div class="week-header">
+        <div class="week-label">Semana 4</div>
+        <div class="week-dates">2–6 junio</div>
+      </div>
+      <table class="posts-table">
+        <thead><tr><th style="width:70px">Día</th><th>Pilar</th><th>Formato</th><th>Tema</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="day-cell">Mié<span class="day-num">4</span></td>
+            <td><span class="pilar-badge ventas">Ventas</span></td>
+            <td><span class="format-tag">Post</span></td>
+            <td><span class="topic-text">Caso real: estudio que eliminó los bloqueos bancarios con G7Cripto</span><div class="topic-sub">El único caso B2B del mes. Números reales si están disponibles. Post largo con más texto que imagen</div></td>
+          </tr>
+          <tr>
+            <td class="day-cell">Vie<span class="day-num">6</span></td>
+            <td><span class="pilar-badge tutorial">Tutorial</span></td>
+            <td><span class="format-tag">Video</span></td>
+            <td><span class="topic-text">Cómo bajar el dinero al banco vía Global66 — para que lo vean tus modelos</span><div class="topic-sub">Cierre de mes con el tutorial más relevante para el estudio. Caption: "comparte esto con tu equipo"</div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <div class="note"><strong>Facebook como canal de confianza B2B:</strong> Los captions en Facebook pueden ser más extensos que en Instagram o TikTok. El decisor de 35–45 años lee antes de actuar. Priorizar datos concretos y argumentos operacionales sobre emocionalidad o tendencias.</div>
+</div>
+
+</div>
+
+<script>
+  function showTab(id, el) {
+    document.querySelectorAll('.network-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    el.classList.add('active');
+  }
+</script>
+</body>
+</html>
